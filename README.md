@@ -1,128 +1,112 @@
-> [!NOTE]  
-> Anycubic have been attempting to block MQTT access, see [here](https://github.com/WaresWichall/hass-anycubic_cloud/issues/33)
-> 
-> I'm moving on to another printer brand and won't be active on this project as much but will still be fixing issues.
-> 
-> MQTT access is now available using Slicer Next (windows version) tokens.
-> 
-> Still works as of 01/12/2024.
+# Anycubic Cloud Integration for Home Assistant
+
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
+[![Maintainer](https://img.shields.io/badge/Maintainer-Baeka89-blue.svg)](https://github.com/Baeka89)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/misomazo)
+
+[Deutsch](#deutsch) | [English](#english)
 
 ---
 
-# Anycubic Cloud Home Assistant Integration
+<a name="deutsch"></a>
+## Deutsch 🇩🇪
 
-Component is working very well so far with:
-- Kobra 3 Combo
-- Kobra 2
-- Kobra 2 Max
-- Kobra 2 Pro
-- Photon Mono M5s (Basic support still)
-- M7 Pro (Basic support still)
+### Über dieses Projekt
+Diese Custom Integration ermöglicht die Anbindung von **Anycubic 3D-Druckern** an Home Assistant. Da Anycubic den lokalen MQTT-Zugriff zunehmend einschränkt, nutzt diese Integration die Cloud-Schnittstelle, um Statuswerte, Temperaturen und Druckfortschritte bereitzustellen. 
 
-If you have success with other printers please report it, or if you don't please report that too :)
+Dieser Fork ist optimiert für aktuelle Home Assistant Versionen (2026.x).
 
-Anycubic Cloud is polled for data updates every 1 minute, whilst MQTT updates can be received multiple times per second.
+### Unterstützte Modelle
+Die Integration funktioniert erfolgreich mit:
+* **Kobra 3 Combo**
+* **Kobra S1**
+* **Kobra 2**
+* **Kobra 2 Pro**
+* **Kobra 2 Max**
+* **Photon Mono M5s** (Basis-Support)
+* **M7 Pro** (Basis-Support)
 
-If you find updates for any sensors are only received every minute, please open an issue.
+### Features
+* **Sensoren:** Temperaturen (Düse/Bett), Lüfter, Druckgeschwindigkeit, Firmware-Status.
+* **Job-Überwachung:** Fortschritt (%), Restlaufzeit, Dateiname und Vorschaubilder.
+* **Steuerung:** Start/Pause/Fortsetzen/Abbrechen von Drucken.
+* **ACE Pro Management:** Steuerung der Trocknung, Filament-Spulen und Farben.
+* **Dateimanager:** Integriertes Panel zur Dateiverwaltung auf dem Drucker.
 
+### Unterstützung
+Wenn dir diese Integration hilft, freue ich mich über eine kleine Unterstützung für die Weiterentwicklung:
+👉 **[Spende via PayPal](https://paypal.me/misomazo)**
 
-## Frontend Card
+---
 
-This integration couples with my [Anycubic card for Home Assistant](https://github.com/WaresWichall/hass-anycubic_card)
+<a name="english"></a>
+## English 🇺🇸
 
+### About this Project
+This custom integration connects **Anycubic 3D Printers** to Home Assistant using the Anycubic Cloud API. It provides real-time telemetry and control even as local MQTT access becomes more restricted.
+
+### Supported Models
+Confirmed working with:
+* **Kobra 3 Combo**
+* **Kobra S1**
+* **Kobra 2**
+* **Kobra 2 Pro**
+* **Kobra 2 Max**
+* **Photon Mono M5s** (Basic support)
+* **M7 Pro** (Basic support)
+
+### Features
+- **Printer Sensors:** Temperature (Nozzle/Bed), fan speed, print speed, etc.
+- **Job Sensors:** Progress, remaining time, file name, and image previews.
+- **Controls:** Start, Pause, Resume, and Cancel print jobs.
+- **ACE Pro Features:** Drying management, spool colors, and settings.
+- **Sidebar Panel:** Integrated file manager and printer dashboard.
+
+### Support
+If you find this integration useful, please consider supporting its development:
+👉 **[Donate via PayPal](https://paypal.me/misomazo)**
+
+---
 
 ## Gallery
 
+<p align="center">
+  <img width="300" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/kobra3-1.png"> 
+  <img width="300" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/anycubic-ace-ui.gif"> 
+  <img width="300" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/kobra2-2.png">
+  <br>
+  <img width="300" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/kobra3-print.png"> 
+  <img width="200" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/kobra2-1.png">
+</p>
 
-<img width="300" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/kobra3-1.png"> <img width="300" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/anycubic-ace-ui.gif"> <img width="300" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/kobra2-2.png">
-<img width="300" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/kobra3-print.png"> <img width="200" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/kobra2-1.png">
+---
 
+## How to Install / Installation
 
-## Features
+1. **Add Repository:** Add this URL to **HACS** as a "Custom Repository" (Category: Integration).
+2. **Install:** Search for "Anycubic Cloud" in HACS and install it.
+3. **Restart:** Restart Home Assistant.
+4. **Setup:** Go to Settings > Devices & Services > Add Integration > **Anycubic Cloud**.
 
-- Supports multiple printers
-- Start print services / UI panel
-- Pause/Resume/Cancel print buttons
-- Edit ACE slot colours/settings via services / UI panel
-- File manager via services / UI panel
-- Retraction/Extrude services
-- Printer sensors e.g. temperature, fan, print speed etc
-- Job sensors e.g. name, progress, image preview, time, print params
-- ACE sensors
-- Firmware Update entities
-- ACE drying management with customisable presets
-- ACE spool management with customisable colour presets
-- Configurable MQTT Connection Mode (Defaults to Printing Only)
-- And more ...
+### Authentication Methods
 
+#### 1. Slicer Next (Recommended for Kobra 3 / S1 / Kobra 2 Series)
+1. Open `%AppData%\AnycubicSlicerNext\AnycubicSlicerNext.conf` (Windows) or `~/Library/Application Support/AnycubicSlicerNext/AnycubicSlicerNext.conf` (macOS).
+2. Copy the long `access_token` string.
+3. Paste it into the Home Assistant config flow.
 
-## Panel
+#### 2. Web Authentication
+1. Log in to [Anycubic Cloud Web](https://cloud-universe.anycubic.com/file).
+2. Open Browser Dev Tools (F12) -> Console.
+3. Type `window.localStorage["XX-Token"]` and copy the result.
 
-It also comes with a frontend panel which will be added to your sidebar.
-Current features:
-- Basic printer info (+ the printer card above)
-- File manager (requires MQTT connection to be active)
-- Start print services
+---
 
+### Technical Components / Technische Komponenten
+* `manifest.json`: Metadata, 2026 compatibility, and dependencies.
+* `sensor.py`: Core logic for creating and updating entities.
+* `api.py`: Communication with Anycubic's Cloud Universe.
+* `panel.js`: Frontend logic for the sidebar file manager.
 
-## How to Install
-
-1. Pick a method of authentication and grab your logon token.
-2. Add this repository to HACS under ... (menu) > Custom Repositories as an **Integration**
-3. Restart Home Assistant
-4. Go to Settings > Integrations > Add New and search Anycubic
-5. Select your chosen authentication mode
-6. Paste your **token** into the `User Token` or `Slicer Access Token` box.
-7. Select your printer, then you're good to go!
-8. Optionally configure more options in the home assistant integration `configure` menus.
-
-
-### Slicer authentication
-
-> [!IMPORTANT]  
-> Only tested / supported with Slicer Next for Windows
-
-1. Make sure your installation of Slicer Next is logged in, then close it.
-2. Locate your `AnycubicSlicerNext` config directory.
-> [!NOTE]  
-> This is found in:
-> ```
-> %AppData%\AnycubicSlicerNext\AnycubicSlicerNext.conf
-> ```
-> or
-> ```
-> C:\Users\<USERNAME>\AppData\Roaming\AnycubicSlicerNext\AnycubicSlicerNext.conf
-> ```
-3. Copy/save the whole `access_token` string without the quotes, it should be a 344 character string.
-4. Ideally you should now clear your login config for the slicer to prevent it logging in at the same time as Home Assistant.
-    This can be done setting your `access_token` to an empty string in the config file, e.g. `"access_token": "",`
-
-<img width="400" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/dev/screenshots/auth_slicer_token.png">
-
-
-### Web authentication
-
-> [!IMPORTANT]  
-> Unfortunately web authentication no longer supports MQTT updates.
-
-1. Go to the [Anycubic Cloud Website](https://cloud-universe.anycubic.com/file)
-2. Log in
-3. Open Developer Tools in your browser
-4. Paste `window.localStorage["XX-Token"]` into the **console**
-5. Copy/save the long string of numbers and letters without the `''` - this is your token.
-
-<img width="400" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/dev/screenshots/anycubic_api_token.png">
-
-### Re-Authentication
-
-If you log yourself out or your token expires you'll get a re-authentication warning in Home Assistant, just grab a new token as above.
-
-
-## Donations
-
-<a href="https://www.buymeacoffee.com/wareswichall"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=wareswichall&button_colour=28303f&font_colour=ffffff&font_family=Lato&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
-
-
-## Thanks
-
-Thanks to @dangreco for his original work on threedy which I first modded and then completely rewrote with Lit instead of React.
+### Thanks / Danke
+Special thanks to **@WaresWichall** for the original cloud integration and **@dangreco** for the initial foundation. This fork is maintained by **@Baeka89** to ensure compatibility with modern Home Assistant versions.
