@@ -2,7 +2,7 @@
   "domain": "anycubic_cloud",
   "name": "Anycubic Cloud (Custom Fork)",
   "codeowners": [
-    "@DEIN_GITHUB_NAME"
+    "@Baeka89"
   ],
   "config_flow": true,
   "dependencies": [
