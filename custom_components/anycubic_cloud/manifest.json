@@ -1,8 +1,8 @@
 {
   "domain": "anycubic_cloud",
-  "name": "Anycubic Cloud",
+  "name": "Anycubic Cloud (Custom Fork)",
   "codeowners": [
-    "@WaresWichall"
+    "@DEIN_GITHUB_NAME"
   ],
   "config_flow": true,
   "dependencies": [
@@ -11,10 +11,12 @@
     "image",
     "panel_custom"
   ],
-  "documentation": "https://www.home-assistant.io/integrations/anycubic_cloud",
+  "documentation": "https://github.com/Baeka89/hass-anycubic_cloud",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/WaresWichall/anycubic_cloud/issues",
+  "issue_tracker": "https://github.com/Baeka89/hass-anycubic_cloud/issues",
   "loggers": [],
-  "requirements": ["paho-mqtt==1.6.1"],
-  "version": "0.2.2"
+  "requirements": [
+    "paho-mqtt"
+  ],
+  "version": "0.5.0"
 }
