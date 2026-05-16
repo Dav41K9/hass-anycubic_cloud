@@ -1,8 +1,8 @@
 {
   "domain": "anycubic_cloud",
-  "name": "Anycubic Cloud v2",
+  "name": "Anycubic Cloud Personal",
   "codeowners": [
-    "@Baeka89"
+    "@Dav41K9"
   ],
   "config_flow": true,
   "dependencies": [
