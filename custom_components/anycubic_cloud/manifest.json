@@ -11,9 +11,9 @@
     "image",
     "panel_custom"
   ],
-  "documentation": "https://github.com/Baeka89/hass-anycubic_cloud",
+  "documentation": "https://github.com/Dav41K9/hass-anycubic_cloud",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/Baeka89/hass-anycubic_cloud/issues",
+  "issue_tracker": "https://github.com/Dav41K9/hass-anycubic_cloud/issues",
   "loggers": [],
   "requirements": [
     "paho-mqtt"
